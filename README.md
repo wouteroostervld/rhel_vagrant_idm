@@ -1,4 +1,4 @@
-!! Vagrantfile with IPA-server and -client.
+#Vagrantfile with IPA-server and -client.
 
 Vagrantfile to install an ipa-server (ipa.example999.com) and configure a separate ipa-client
 (rhel76.example999.com).
