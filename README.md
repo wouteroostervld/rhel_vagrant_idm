@@ -16,7 +16,7 @@ https://github.com/wouteroostervld/adb-vagrant-registration
     cd adb-vagrant-registration
     vagrant plugin install .
 
-Uses the/a rhel76-box with nfs and subscription-manager available. See https://github.com/wouteroostervld/rhel\_packer\_template to build required box.
+Uses the/a rhel76-box with nfs and subscription-manager available. See https://github.com/wouteroostervld/rhel_packer_template to build required box.
 
 How to test the functioning of the ipa-client and -server:
 
