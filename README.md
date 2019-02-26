@@ -18,11 +18,13 @@ https://github.com/wouteroostervld/adb-vagrant-registration
 
 Uses the/a rhel76-box with nfs and subscription-manager available. See https://github.com/wouteroostervld/rhel_packer_template to build required box.
 
+The password for admin (both kerberos and webinterface) is "password".
+
 How to test the functioning of the ipa-client and -server:
 
 Connect to the client-machine:
 
-    [wouter@cookie vanilla_rhel]$ vagrant ssh rhel76
+    [wouter@cookie]$ vagrant ssh rhel76
 
 Become the admin-user:
 
