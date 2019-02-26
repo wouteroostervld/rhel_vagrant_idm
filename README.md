@@ -3,9 +3,12 @@
 Vagrantfile to install an ipa-server (ipa.example999.com) and configure a separate ipa-client
 (rhel76.example999.com).
 
-Vagrantfile uses vagrant-registration to register box. This plugin is broken since RHEL 7.5. Project
-is waiting on a patch ( https://github.com/projectatomic/adb-vagrant-registration/pull/127 ).
-In the mean time you can use this repo which integrates this fix:
+Vagrantfile uses vagrant-registration to register box. Define environment vars SUB\_USERNAME
+and SUB\_PASSWORD with your RedHat login (make sure you have some spare entitlements).
+
+(This plugin is broken since RHEL 7.5. Project is waiting on a patch 
+ (https://github.com/projectatomic/adb-vagrant-registration/pull/127) . In the mean time you can
+use this repo which integrates this fix:
 
 https://github.com/wouteroostervld/adb-vagrant-registration
 
