@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 sudo mkdir -p home/vagrant/.ssh
 sudo chown root:root home
-sudo chmod u=rwX,g=rX,o=rX home
+sudo chmod -R u=rwX,g=rX,o=rX home
 sudo chown 9999:9999 -R home/vagrant
 sudo chmod u=rwX,g=rX,o=rX home/vagrant
 sudo chmod u=rwX,g=rX,o= home/vagrant/.ssh

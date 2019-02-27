@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
 
     rhel76.vm.hostname = "rhel76.example999.com"
     rhel76.vm.synced_folder ".", "/vagrant", disabled: true
-    #rhel76.vm.synced_folder "home", "/home", type: "nfs"
+    rhel76.vm.synced_folder "home", "/home", type: "nfs"
     rhel76.vm.network "private_network", ip: "192.168.33.10"
     rhel76.vm.provider :libvirt do |libvirt|
       libvirt.memory = 2048
