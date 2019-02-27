@@ -24,25 +24,49 @@ Run the ./setup.sh at least once, this creates vagrant-users home.
 
 The password for admin (both kerberos and webinterface) is "password".
 
+## Available machines:
+
+- rhel76: vanilla redhat with nfs-home.
+- ipa: ipa-server (FreeIPA/RedHat IdM)
+- clipa: ipa-client *no autostart*
+
+## Start
+
+To start and provision rhel76 and ipa:
+
+    vagrant up
+
+To start clipa:
+
+    vagrant up clipa
+
+Restart from scratch:
+
+    vagrant destroy -f MACHINE && vagrant up MACHINE.
+
+(You can install plugin vagrant-pristine to do this in one commando.)
+
+## Testing ipa and clipa
+
 How to test the functioning of the ipa-client and -server:
 
 Connect to the client-machine:
 
-    [wouter@cookie]$ vagrant ssh rhel76
+    [wouter@cookie]$ vagrant ssh clipa
 
 Become the admin-user:
 
-    [vagrant@rhel76 ~]$ sudo -iu admin
+    [vagrant@clipa ~]$ sudo -iu admin
     Creating home directory for admin.
 
 Get the admin-token:
 
-    [admin@rhel76 ~]$ kinit
+    [admin@clipa ~]$ kinit
     Password for admin@EXAMPLE999.COM: 
 
 Test GSSAPI SSO functionality:
 
-    [admin@rhel76 ~]$ ssh -v ipa
+    [admin@clipa ~]$ ssh -v ipa
     OpenSSH_7.4p1, OpenSSL 1.0.2k-fips  26 Jan 2017
     (...)
     debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password,keyboard-interactive
@@ -66,3 +90,10 @@ Hooray!
 
 If you add "192.168.33.11 ipa.example999.com" to /etc/hosts you can connect to the admin-interface
 of RedHat IdM.
+
+
+## rhel76
+
+You can use this machine to test your skills in configuring LDAP/Kerberos- or IPA-client configuration
+or (develop) any other 'kata'.
+

@@ -8,6 +8,18 @@ Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
 
+  config.vm.define "rhel76" do |rhel76|
+    rhel76.vm.box = "rhel76"
+
+    rhel76.vm.hostname = "rhel76.example999.com"
+    rhel76.vm.synced_folder ".", "/vagrant", disabled: true
+    rhel76.vm.synced_folder "home", "/home", type: "nfs"
+    rhel76.vm.network "private_network", ip: "192.168.33.10"
+    rhel76.vm.provider :libvirt do |libvirt|
+      libvirt.memory = 2048
+    end
+  end
+
   config.vm.define "ipa" do |ipa|
     ipa.vm.box = "rhel76"
 
@@ -34,17 +46,17 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.define "rhel76" do |rhel76|
-    rhel76.vm.box = "rhel76"
+  config.vm.define "clipa", autostart: false do |clipa|
+    clipa.vm.box = "rhel76"
 
-    rhel76.vm.hostname = "rhel76.example999.com"
-    rhel76.vm.synced_folder ".", "/vagrant", disabled: true
-    rhel76.vm.synced_folder "home", "/home", type: "nfs"
-    rhel76.vm.network "private_network", ip: "192.168.33.10"
-    rhel76.vm.provider :libvirt do |libvirt|
+    clipa.vm.hostname = "clipa.example999.com"
+    clipa.vm.synced_folder ".", "/vagrant", disabled: true
+    clipa.vm.synced_folder "home", "/home", type: "nfs"
+    clipa.vm.network "private_network", ip: "192.168.33.12"
+    clipa.vm.provider :libvirt do |libvirt|
       libvirt.memory = 2048
     end
-    rhel76.vm.provision "shell", inline: <<-SHELL
+    clipa.vm.provision "shell", inline: <<-SHELL
       yum -y update 
       yum -y group install "Directory Client"
       yum install -y sss\*
