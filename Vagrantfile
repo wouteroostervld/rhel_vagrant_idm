@@ -6,10 +6,15 @@ Vagrant.configure("2") do |config|
   config.registration.username = ENV['SUB_USERNAME']
   config.registration.password = ENV['SUB_PASSWORD']
 
+  config.ssh.insert_key = false
+
   config.vm.define "ipa" do |ipa|
     ipa.vm.box = "rhel76"
+
     ipa.vm.hostname = "ipa.example999.com"
-    ipa.vm.synced_folder ".", "/vagrant", type: "nfs"
+    #ipa.vm.synced_folder ".", "/vagrant", type: 'nfs'
+    ipa.vm.synced_folder ".", "/vagrant", disabled: true
+    ipa.vm.synced_folder "home", "/home", type: "nfs"
     ipa.vm.network "private_network", ip: "192.168.33.11"
     ipa.vm.provider :libvirt do |libvirt|
       libvirt.memory = 2048
@@ -31,8 +36,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "rhel76" do |rhel76|
     rhel76.vm.box = "rhel76"
+
     rhel76.vm.hostname = "rhel76.example999.com"
-    rhel76.vm.synced_folder ".", "/vagrant", type: "nfs"
+    rhel76.vm.synced_folder ".", "/vagrant", disabled: true
+    #rhel76.vm.synced_folder "home", "/home", type: "nfs"
     rhel76.vm.network "private_network", ip: "192.168.33.10"
     rhel76.vm.provider :libvirt do |libvirt|
       libvirt.memory = 2048

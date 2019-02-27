@@ -3,6 +3,8 @@
 Vagrantfile to install an ipa-server (ipa.example999.com) and configure a separate ipa-client
 (rhel76.example999.com).
 
+## Installation
+
 Vagrantfile uses vagrant-registration to register box. Define environment vars SUB\_USERNAME
 and SUB\_PASSWORD with your RedHat login (make sure you have some spare entitlements).
 
@@ -17,6 +19,8 @@ https://github.com/wouteroostervld/adb-vagrant-registration
     vagrant plugin install .
 
 Uses the/a rhel76-box with nfs and subscription-manager available. See https://github.com/wouteroostervld/rhel_packer_template to build required box.
+
+Run the ./setup.sh at least once, this creates vagrant-users home.
 
 The password for admin (both kerberos and webinterface) is "password".
 
