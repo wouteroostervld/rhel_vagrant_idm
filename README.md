@@ -44,7 +44,7 @@ Restart from scratch:
 
     vagrant destroy -f MACHINE && vagrant up MACHINE.
 
-(You can install plugin vagrant-pristine to do this in one commando.)
+(You can install plugin vagrant-pristine to do this in one command.)
 
 ## Testing ipa and clipa
 
