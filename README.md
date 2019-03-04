@@ -29,6 +29,7 @@ The password for admin (both kerberos and webinterface) is "password".
 - rhel76: vanilla redhat with nfs-home.
 - ipa: ipa-server (FreeIPA/RedHat IdM)
 - clipa: ipa-client *no autostart*
+- kerbldapcl: kerberos/ipa-client
 
 ## Start
 
