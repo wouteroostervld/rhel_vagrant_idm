@@ -38,6 +38,7 @@ Vagrant.configure("2") do |config|
     ipa.vm.provision "shell", inline: <<-SHELL
       subscription-manager repos --enable=rhel-7-server-optional-rpms
       #install Redhat IdM (AKA FreeIPA with RedHat-branding)
+      yum -y clean all
       yum -y update
       yum -y install ipa-server ipa-server-dns
       
@@ -63,6 +64,7 @@ Vagrant.configure("2") do |config|
     end
     clipa.vm.provision "shell", inline: <<-SHELL
       subscription-manager repos --enable=rhel-7-server-optional-rpms
+      yum -y clean all
       yum -y update
       yum -y group install "Directory Client"
       yum install -y sss\*
@@ -93,6 +95,7 @@ Vagrant.configure("2") do |config|
     end
     kerbldapcl.vm.provision "shell", inline: <<-SHELL
       subscription-manager repos --enable=rhel-7-server-optional-rpms
+      yum -y clean all
       yum -y update
       yum -y group install "Directory Client"
       yum install -y sss\* krb5-workstation pam_krb5
